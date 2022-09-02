@@ -18,7 +18,6 @@ extension SampleApiEndPoint {
         return "fIONQyI7YhIPKYb3H8Zi1W9kPPDbZ3F7nmuWMXe8"
     }
 
-    // swiftlint:disable cyclomatic_complexity
     func urlString() -> String {
 
         let host = SampleApiEndPoint.baseURL
@@ -32,4 +31,3 @@ extension SampleApiEndPoint {
     }
 
 }
-

@@ -23,7 +23,7 @@ public enum Stylesheet {
 
     enum Color {
         static let background = UIColor(red: 220 / 255, green: 206 / 255, blue: 190 / 255, alpha: 1.0)
-        static let white = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1.0)
+        static let white = UIColor(red: 255 / 255, green: 255 / 255, blue: 255 / 255, alpha: 1.0)
         static let black = UIColor.black
         static let exploreButton = UIColor(red: 191 / 255, green: 46 / 255, blue: 14 / 255, alpha: 1.0)
     }

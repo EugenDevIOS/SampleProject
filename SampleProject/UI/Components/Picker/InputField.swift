@@ -148,6 +148,9 @@ private extension InputField {
         addSubview(activationButton)
         activationButton.addTarget(self, action: #selector(activationButtonPressed(_:)), for: .touchDown)
 
+        inputPickerView.delegate = self
+        inputPickerView.dataSource = self
+
         inputField.font = Stylesheet.FontFace.terminal18
         inputField.placeholder = NSLocalizedString("Choose", comment: "")
         inputField.borderStyle = .none
@@ -155,10 +158,6 @@ private extension InputField {
         inputField.keyboardAppearance = .dark
         inputField.tintColor = UIColor.clear
         inputField.inputView = inputPickerView
-
-        inputPickerView.delegate = self
-        inputPickerView.dataSource = self
-
         addSubview(inputField)
         inputField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16.0).isActive = true
         inputField.topAnchor.constraint(equalTo: topAnchor, constant: 8.0).isActive = true

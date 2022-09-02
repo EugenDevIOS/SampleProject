@@ -57,7 +57,6 @@ class WelcomeViewController: UIViewController {
         contentView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor).isActive = true
         contentView.widthAnchor.constraint(equalTo: contentScrollView.widthAnchor).isActive = true
 
-
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
         contentStackView.axis = .vertical
         contentStackView.distribution = .fill
@@ -106,4 +105,3 @@ private extension WelcomeViewController {
     }
 
 }
-

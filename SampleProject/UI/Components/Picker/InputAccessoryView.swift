@@ -36,8 +36,6 @@ final class InputAccessoryView: UIView {
         effectView.frame = bounds
         addSubview(effectView)
 
-
-
         activationButton.setTitleColor(UIColor.black, for: .normal)
         activationButton.translatesAutoresizingMaskIntoConstraints = false
         activationButton.titleLabel?.font = Stylesheet.FontFace.terminal14
@@ -55,4 +53,3 @@ final class InputAccessoryView: UIView {
     }
 
 }
-
