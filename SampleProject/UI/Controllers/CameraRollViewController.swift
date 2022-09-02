@@ -12,7 +12,7 @@ class CameraRollViewController: UIViewController {
     private var bottomContentAnchor: NSLayoutConstraint!
 
     private let cameraInputContainerView = InputContainerView()
-    private let dateInputContainerView = InputContainerView()
+    private let dateInputContainerView = DateInputContainerView()
 
     private let exploreButton: RoundedButton = RoundedButton()
 
