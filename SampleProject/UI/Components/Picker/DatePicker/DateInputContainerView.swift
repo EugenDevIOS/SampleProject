@@ -22,6 +22,8 @@ class DateInputContainerView: UIView {
         titleLabel.text = title
     }
 
+    // MARK: - Private
+
     private func setup() {
         backgroundColor = UIColor.clear
         clipsToBounds = true

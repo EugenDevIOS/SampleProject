@@ -4,7 +4,15 @@
 
 import UIKit
 
+protocol PickerInputItem {
+    var title: String {get}
+}
+
 class InputField: UIView {
+
+    enum Constant {
+        static let rowHeight: CGFloat = 36
+    }
 
     var showDoneButton: Bool = false {
         didSet {
@@ -16,6 +24,7 @@ class InputField: UIView {
                 doneView.setActionButtonTitle(NSLocalizedString("Done", comment: ""))
                 doneView.activationButtonPressed = { [weak self] in
                     self?.inputField.resignFirstResponder()
+                    self?.doneButtonPressed?()
                 }
                 inputField.inputAccessoryView = doneView
             } else {
@@ -24,10 +33,15 @@ class InputField: UIView {
         }
     }
 
+    var doneButtonPressed: (() -> Void)?
+    var valueChanged: (() -> Void)?
+
     private let inputField: UITextField = UITextField()
     private let arrowIconImageView: UIImageView = UIImageView()
     private let inputPickerView: UIPickerView = UIPickerView()
     private let activationButton: UIButton = UIButton()
+
+    private var content: [[PickerInputItem]] = []
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,6 +54,86 @@ class InputField: UIView {
 
     func setImage(_ image: UIImage?) {
         arrowIconImageView.image = image
+    }
+
+    func setItems(_ items: [PickerInputItem], shouldUpdateValue: Bool = true) {
+        content.removeAll()
+        content.append(items)
+        inputPickerView.reloadAllComponents()
+        if !items.isEmpty {
+            inputPickerView.selectRow(0, inComponent: 0, animated: false)
+        }
+        if shouldUpdateValue {
+            updateValue()
+        }
+    }
+
+    func getSelectedItem<T>() -> T? {
+        guard !content.isEmpty else {
+            return nil
+        }
+        if content.count > 1 {
+            return nil
+        } else {
+            let row = inputPickerView.selectedRow(inComponent: 0)
+            return row >= 0 ? content[0][row] as? T : nil
+        }
+    }
+
+}
+
+// MARK: - UIPickerViewDelegate
+
+extension InputField: UIPickerViewDelegate, UIPickerViewDataSource {
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return content.count
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return content[component].count
+    }
+
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        return NSAttributedString(string: content[component][row].title,
+                                  attributes: [.font: Stylesheet.FontFace.terminal18, .foregroundColor: Stylesheet.Color.black])
+    }
+
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return Constant.rowHeight
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        updateValue()
+    }
+
+}
+
+// MARK: - Private
+
+private extension InputField {
+
+    func updateValue() {
+        let oldText = inputField.text
+        defer {
+            if oldText != inputField.text {
+                valueChanged?()
+            }
+        }
+        guard !content.isEmpty else {
+            inputField.text = ""
+            return
+        }
+        if content.count > 1 {
+            // not implemented
+        } else {
+            let row = inputPickerView.selectedRow(inComponent: 0)
+            if row >= 0 {
+                inputField.text = content[0][row].title
+            } else {
+                inputField.text = ""
+            }
+        }
     }
 
     private func setup() {
@@ -57,11 +151,14 @@ class InputField: UIView {
         inputField.font = Stylesheet.FontFace.terminal18
         inputField.placeholder = NSLocalizedString("Choose", comment: "")
         inputField.borderStyle = .none
-        inputField.delegate = self
         inputField.translatesAutoresizingMaskIntoConstraints = false
         inputField.keyboardAppearance = .dark
         inputField.tintColor = UIColor.clear
         inputField.inputView = inputPickerView
+
+        inputPickerView.delegate = self
+        inputPickerView.dataSource = self
+
         addSubview(inputField)
         inputField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16.0).isActive = true
         inputField.topAnchor.constraint(equalTo: topAnchor, constant: 8.0).isActive = true
@@ -83,18 +180,6 @@ class InputField: UIView {
             return
         }
         _ = inputField.becomeFirstResponder()
-    }
-
-}
-
-// MARK: - UITextFieldDelegate
-
-extension InputField: UITextFieldDelegate {
-
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-    }
-
-    func textFieldDidEndEditing(_ textField: UITextField) {
     }
 
 }

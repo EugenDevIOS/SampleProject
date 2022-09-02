@@ -24,12 +24,12 @@ class DateInputField: UIView {
         }
     }
 
+    private(set) var selectedDate: Date?
+
     private let inputField: UITextField = UITextField()
     private let arrowIconImageView: UIImageView = UIImageView()
     private let datePickerView: UIDatePicker = UIDatePicker()
     private let activationButton: UIButton = UIButton()
-
-    private var selectedDate: Date?
 
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -50,6 +50,24 @@ class DateInputField: UIView {
     func setImage(_ image: UIImage?) {
         arrowIconImageView.image = image
     }
+
+}
+
+// MARK: - UITextFieldDelegate
+
+extension DateInputField: UITextFieldDelegate {
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+    }
+
+}
+
+// MARK: - Private
+
+private extension DateInputField {
 
     private func setup() {
         backgroundColor = Stylesheet.Color.white.withAlphaComponent(0.5)
@@ -103,18 +121,6 @@ class DateInputField: UIView {
     @objc private func dateChanged(_ sender: UIDatePicker) {
         selectedDate = sender.date
         inputField.text = dateFormatter.string(from: sender.date)
-    }
-
-}
-
-// MARK: - UITextFieldDelegate
-
-extension DateInputField: UITextFieldDelegate {
-
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-    }
-
-    func textFieldDidEndEditing(_ textField: UITextField) {
     }
 
 }

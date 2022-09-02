@@ -16,6 +16,8 @@ class CameraRollViewController: UIViewController {
 
     private let exploreButton: RoundedButton = RoundedButton()
 
+    private var interactor: CameraRollInteractor!
+
     private let backgroundImage = UIImageView()
 
     override func viewDidLoad() {
@@ -24,6 +26,8 @@ class CameraRollViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [.font: Stylesheet.FontFace.navigationBold,
                                                                    .foregroundColor: Stylesheet.Color.black]
         title = NSLocalizedString("Select Camera and Date", comment: "")
+
+        interactor = CameraRollInteractor()
 
         backgroundImage.contentMode = .scaleToFill
         backgroundImage.clipsToBounds = true
@@ -70,6 +74,7 @@ class CameraRollViewController: UIViewController {
         cameraInputContainerView.inputField.showDoneButton = true
         cameraInputContainerView.inputField.setImage(UIImage(named: "dropdown"))
         cameraInputContainerView.heightAnchor.constraint(equalToConstant: 85.0).isActive = true
+        cameraInputContainerView.inputField.setItems(CameraRollInteractor.CameraType.allCases)
 
         dateInputContainerView.translatesAutoresizingMaskIntoConstraints = false
         dateInputContainerView.setTitle(NSLocalizedString("Date", comment: ""))
