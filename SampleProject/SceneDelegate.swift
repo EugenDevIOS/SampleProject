@@ -12,7 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else {
             return
         }
-        let cameraRollViewController = CameraRollViewController()
+        let cameraRollViewController = WelcomeViewController()
         let rootViewController = UINavigationController(rootViewController: cameraRollViewController)
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = rootViewController

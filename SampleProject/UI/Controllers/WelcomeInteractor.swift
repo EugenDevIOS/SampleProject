@@ -1,10 +1,10 @@
 //
-//  CameraRollInteractor.swift
+//  WelcomeInteractor.swift
 //
 
 import Foundation
 
-final class CameraRollInteractor {
+final class WelcomeInteractor {
 
     enum CameraType: String, CaseIterable, PickerInputItem {
         case front = "FHAZ"

@@ -1,10 +1,10 @@
 //
-//  CameraRollViewController.swift
+//  WelcomeViewController.swift
 // 
 
 import UIKit
 
-class CameraRollViewController: UIViewController {
+class WelcomeViewController: UIViewController {
 
     private let contentScrollView: UIScrollView = UIScrollView()
     private let contentStackView: UIStackView = UIStackView()
@@ -16,7 +16,7 @@ class CameraRollViewController: UIViewController {
 
     private let exploreButton: RoundedButton = RoundedButton()
 
-    private var interactor: CameraRollInteractor!
+    private var interactor: WelcomeInteractor!
 
     private let backgroundImage = UIImageView()
 
@@ -27,7 +27,7 @@ class CameraRollViewController: UIViewController {
                                                                    .foregroundColor: Stylesheet.Color.black]
         title = NSLocalizedString("Select Camera and Date", comment: "")
 
-        interactor = CameraRollInteractor()
+        interactor = WelcomeInteractor()
 
         backgroundImage.contentMode = .scaleToFill
         backgroundImage.clipsToBounds = true
@@ -74,7 +74,7 @@ class CameraRollViewController: UIViewController {
         cameraInputContainerView.inputField.showDoneButton = true
         cameraInputContainerView.inputField.setImage(UIImage(named: "dropdown"))
         cameraInputContainerView.heightAnchor.constraint(equalToConstant: 85.0).isActive = true
-        cameraInputContainerView.inputField.setItems(CameraRollInteractor.CameraType.allCases)
+        cameraInputContainerView.inputField.setItems(WelcomeInteractor.CameraType.allCases)
 
         dateInputContainerView.translatesAutoresizingMaskIntoConstraints = false
         dateInputContainerView.setTitle(NSLocalizedString("Date", comment: ""))
@@ -100,7 +100,7 @@ class CameraRollViewController: UIViewController {
 
 // MARK: - Private
 
-private extension CameraRollViewController {
+private extension WelcomeViewController {
 
     @objc func exploreButtonTapped(_ sender: UIButton) {
     }
