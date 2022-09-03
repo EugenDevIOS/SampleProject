@@ -96,7 +96,7 @@ extension InputField: UIPickerViewDelegate, UIPickerViewDataSource {
 
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         return NSAttributedString(string: content[component][row].title,
-                                  attributes: [.font: Stylesheet.FontFace.terminal18, .foregroundColor: Stylesheet.Color.black])
+                                  attributes: [.font: Stylesheet.FontFace.terminal18, .foregroundColor: Stylesheet.Color.white])
     }
 
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
