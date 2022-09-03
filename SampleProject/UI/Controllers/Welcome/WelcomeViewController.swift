@@ -2,14 +2,18 @@
 //  WelcomeViewController.swift
 // 
 
+import Shakuro_iOS_Toolbox
 import UIKit
 
 class WelcomeViewController: UIViewController {
 
+    private enum LayoutInfo {
+        static let topConstraint = UIScreen.main.bounds.height / 812.0 * 167.0
+    }
+
     private let contentScrollView: UIScrollView = UIScrollView()
     private let contentStackView: UIStackView = UIStackView()
     private let contentView: UIView = UIView()
-    private var bottomContentAnchor: NSLayoutConstraint!
 
     private let cameraInputContainerView = InputContainerView()
     private let dateInputContainerView = DateInputContainerView()
@@ -17,6 +21,7 @@ class WelcomeViewController: UIViewController {
     private let exploreButton: RoundedButton = RoundedButton()
 
     private let activityIndicatorView: ActivityIndicatorView = ActivityIndicatorView()
+    private var keyboardHandler: KeyboardHandler?
 
     private var interactor: WelcomeInteractor!
 
@@ -41,12 +46,12 @@ class WelcomeViewController: UIViewController {
         contentScrollView.translatesAutoresizingMaskIntoConstraints = false
         contentScrollView.showsHorizontalScrollIndicator = false
         contentScrollView.showsVerticalScrollIndicator = false
+        contentScrollView.keyboardDismissMode = .interactive
         view.addSubview(contentScrollView)
         contentScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         contentScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         contentScrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        bottomContentAnchor = contentScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        bottomContentAnchor.isActive = true
+        contentScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
 
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentScrollView.addSubview(contentView)
@@ -55,8 +60,8 @@ class WelcomeViewController: UIViewController {
         heightAnchor.isActive = true
         contentView.leadingAnchor.constraint(equalTo: contentScrollView.leadingAnchor).isActive = true
         contentView.trailingAnchor.constraint(equalTo: contentScrollView.trailingAnchor).isActive = true
-        contentView.topAnchor.constraint(equalTo: contentScrollView.topAnchor, constant: 167.0).isActive = true
-        contentView.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor).isActive = true
+        contentView.topAnchor.constraint(equalTo: contentScrollView.topAnchor, constant: LayoutInfo.topConstraint).isActive = true
+        contentView.bottomAnchor.constraint(lessThanOrEqualTo: contentScrollView.bottomAnchor).isActive = true
         contentView.widthAnchor.constraint(equalTo: contentScrollView.widthAnchor).isActive = true
 
         contentStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -103,6 +108,31 @@ class WelcomeViewController: UIViewController {
         activityIndicatorView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         activityIndicatorView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         activityIndicatorView.isHidden = true
+
+        keyboardHandler = KeyboardHandler(enableCurveHack: false, heightDidChange: { [weak self] (change: KeyboardHandler.KeyboardChange) in
+            guard let strongSelf = self else {
+                return
+            }
+            let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: change.newHeight, right: 0.0)
+            UIView.animateKeyframes(
+                withDuration: change.animationDuration,
+                delay: 0.0,
+                animations: {
+                    strongSelf.contentScrollView.contentInset = contentInsets
+                },
+                completion: nil)
+        })
+
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        keyboardHandler?.isActive = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        keyboardHandler?.isActive = false
     }
 
 }
