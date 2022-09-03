@@ -36,7 +36,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         contentView.layer.masksToBounds = true
         contentView.layer.cornerRadius = 8.0
 
-        photoImageView.contentMode = .scaleAspectFit
+        photoImageView.contentMode = .scaleAspectFill
         photoImageView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(photoImageView)
         photoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true

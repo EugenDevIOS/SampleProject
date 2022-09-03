@@ -38,7 +38,7 @@ class PhotoDetailsNavigationView: UIView {
 
         backButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.backgroundColor = UIColor.clear
-        backButton.setImage(UIImage(named: "back"), for: .normal)
+        backButton.setImage(UIImage(named: "back")?.withRenderingMode(.alwaysTemplate), for: .normal)
         backButton.tintColor = Stylesheet.Color.white
         backButton.addTarget(self, action: #selector(backButtonPressed(_:)), for: .touchUpInside)
         containerView.addSubview(backButton)
@@ -119,4 +119,3 @@ class PhotoDetailsNavigationViewContainer: UIView {
     }
 
 }
-

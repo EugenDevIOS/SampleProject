@@ -103,4 +103,10 @@ extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDele
         return CGSize(width: width, height: width)
     }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let photo = photos[indexPath.item]
+        let viewController = PhotoDetailsViewController.instantiateViewController(option: PhotoDetailsViewController.Option(photo: photo))
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+
 }
