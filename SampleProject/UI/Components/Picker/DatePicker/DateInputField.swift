@@ -76,6 +76,7 @@ private extension DateInputField {
         datePickerView.setDate(Date(), animated: false)
 
         inputField.font = Stylesheet.FontFace.terminal18
+        inputField.textColor = Stylesheet.Color.black
         inputField.placeholder = NSLocalizedString("Choose", comment: "")
         inputField.borderStyle = .none
         inputField.translatesAutoresizingMaskIntoConstraints = false

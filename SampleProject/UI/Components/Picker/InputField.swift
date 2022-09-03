@@ -152,6 +152,7 @@ private extension InputField {
         inputPickerView.dataSource = self
 
         inputField.font = Stylesheet.FontFace.terminal18
+        inputField.textColor = Stylesheet.Color.black
         inputField.placeholder = NSLocalizedString("Choose", comment: "")
         inputField.borderStyle = .none
         inputField.translatesAutoresizingMaskIntoConstraints = false
