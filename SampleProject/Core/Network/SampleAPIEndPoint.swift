@@ -3,8 +3,9 @@
 //
 
 import Foundation
+import Shakuro_HTTPClient
 
-enum SampleApiEndPoint {
+enum SampleAPIEndPoint {
 
     static let baseURL = "https://api.nasa.gov"
 
@@ -12,7 +13,7 @@ enum SampleApiEndPoint {
 
 }
 
-extension SampleApiEndPoint {
+extension SampleAPIEndPoint: HTTPClientAPIEndPoint {
 
     var apiKey: String {
         return "fIONQyI7YhIPKYb3H8Zi1W9kPPDbZ3F7nmuWMXe8"
@@ -20,7 +21,7 @@ extension SampleApiEndPoint {
 
     func urlString() -> String {
 
-        let host = SampleApiEndPoint.baseURL
+        let host = SampleAPIEndPoint.baseURL
 
         switch self {
         case .curiosityPhoto(let query):

@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1994C31568AF1AF8B0B93692 /* Pods_SampleProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F8F842F5B9AFCA153E104F /* Pods_SampleProject.framework */; };
+		6B2E5E1528C346D4008A87EB /* SampleAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2E5E1428C346D4008A87EB /* SampleAPIClient.swift */; };
+		6B2E5E1728C348D9008A87EB /* RoverPhotosParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2E5E1628C348D9008A87EB /* RoverPhotosParser.swift */; };
+		6B2E5E1928C34C44008A87EB /* SampleTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2E5E1828C34C44008A87EB /* SampleTaskManager.swift */; };
+		6B2E5E1C28C34DD6008A87EB /* RoverPhotosOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2E5E1B28C34DD6008A87EB /* RoverPhotosOperation.swift */; };
 		6B58F2A528C0F96300160C22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B58F2A428C0F96300160C22 /* AppDelegate.swift */; };
 		6B58F2A728C0F96300160C22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B58F2A628C0F96300160C22 /* SceneDelegate.swift */; };
 		6B58F2A928C0F96300160C22 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B58F2A828C0F96300160C22 /* WelcomeViewController.swift */; };
@@ -24,13 +28,17 @@
 		6BEA26F128C28EB200EF0981 /* DateInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA26F028C28EB200EF0981 /* DateInputField.swift */; };
 		6BEA26F328C290F800EF0981 /* DateInputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA26F228C290F800EF0981 /* DateInputContainerView.swift */; };
 		6BEA26F628C2944E00EF0981 /* WelcomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA26F528C2944E00EF0981 /* WelcomeInteractor.swift */; };
-		6BEA26F828C2A46300EF0981 /* SampleApiEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA26F728C2A46300EF0981 /* SampleApiEndPoint.swift */; };
+		6BEA26F828C2A46300EF0981 /* SampleAPIEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BEA26F728C2A46300EF0981 /* SampleAPIEndPoint.swift */; };
 		6BEA26FD28C2ABA600EF0981 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 6BEA26FC28C2ABA600EF0981 /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		19F8F842F5B9AFCA153E104F /* Pods_SampleProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SampleProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		275E0AE7AE145533EA7942AF /* Pods-SampleProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleProject.debug.xcconfig"; path = "Target Support Files/Pods-SampleProject/Pods-SampleProject.debug.xcconfig"; sourceTree = "<group>"; };
+		6B2E5E1428C346D4008A87EB /* SampleAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAPIClient.swift; sourceTree = "<group>"; };
+		6B2E5E1628C348D9008A87EB /* RoverPhotosParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPhotosParser.swift; sourceTree = "<group>"; };
+		6B2E5E1828C34C44008A87EB /* SampleTaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTaskManager.swift; sourceTree = "<group>"; };
+		6B2E5E1B28C34DD6008A87EB /* RoverPhotosOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPhotosOperation.swift; sourceTree = "<group>"; };
 		6B58F2A128C0F96300160C22 /* SampleProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B58F2A428C0F96300160C22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B58F2A628C0F96300160C22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,7 +57,7 @@
 		6BEA26F028C28EB200EF0981 /* DateInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInputField.swift; sourceTree = "<group>"; };
 		6BEA26F228C290F800EF0981 /* DateInputContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateInputContainerView.swift; sourceTree = "<group>"; };
 		6BEA26F528C2944E00EF0981 /* WelcomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeInteractor.swift; sourceTree = "<group>"; };
-		6BEA26F728C2A46300EF0981 /* SampleApiEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleApiEndPoint.swift; sourceTree = "<group>"; };
+		6BEA26F728C2A46300EF0981 /* SampleAPIEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAPIEndPoint.swift; sourceTree = "<group>"; };
 		6BEA26FC28C2ABA600EF0981 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = SOURCE_ROOT; };
 		B8295AC17375FFBC786DFF41 /* Pods-SampleProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SampleProject.release.xcconfig"; path = "Target Support Files/Pods-SampleProject/Pods-SampleProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,6 +80,23 @@
 				19F8F842F5B9AFCA153E104F /* Pods_SampleProject.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6B2E5E1A28C34DBB008A87EB /* TaskManager */ = {
+			isa = PBXGroup;
+			children = (
+				6B2E5E1828C34C44008A87EB /* SampleTaskManager.swift */,
+				6B2E5E1D28C34FEE008A87EB /* Operations */,
+			);
+			path = TaskManager;
+			sourceTree = "<group>";
+		};
+		6B2E5E1D28C34FEE008A87EB /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				6B2E5E1B28C34DD6008A87EB /* RoverPhotosOperation.swift */,
+			);
+			path = Operations;
 			sourceTree = "<group>";
 		};
 		6B58F29828C0F96300160C22 = {
@@ -186,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				6BEA26FA28C2A76100EF0981 /* Network */,
+				6B2E5E1A28C34DBB008A87EB /* TaskManager */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -193,7 +219,9 @@
 		6BEA26FA28C2A76100EF0981 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				6BEA26F728C2A46300EF0981 /* SampleApiEndPoint.swift */,
+				6B2E5E1628C348D9008A87EB /* RoverPhotosParser.swift */,
+				6B2E5E1428C346D4008A87EB /* SampleAPIClient.swift */,
+				6BEA26F728C2A46300EF0981 /* SampleAPIEndPoint.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -365,7 +393,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B58F2A928C0F96300160C22 /* WelcomeViewController.swift in Sources */,
+				6B2E5E1C28C34DD6008A87EB /* RoverPhotosOperation.swift in Sources */,
 				6B58F2D128C1520500160C22 /* UIScrollView+Helpers.swift in Sources */,
+				6B2E5E1928C34C44008A87EB /* SampleTaskManager.swift in Sources */,
 				6B58F2B928C0F97200160C22 /* InputField.swift in Sources */,
 				6B58F2C628C1351600160C22 /* InputContainerView.swift in Sources */,
 				6B58F2CA28C14A0000160C22 /* RoundedButton.swift in Sources */,
@@ -373,7 +403,9 @@
 				6BEA26F628C2944E00EF0981 /* WelcomeInteractor.swift in Sources */,
 				6B58F2A728C0F96300160C22 /* SceneDelegate.swift in Sources */,
 				6B58F2BC28C10CF100160C22 /* InputAccessoryView.swift in Sources */,
-				6BEA26F828C2A46300EF0981 /* SampleApiEndPoint.swift in Sources */,
+				6B2E5E1528C346D4008A87EB /* SampleAPIClient.swift in Sources */,
+				6BEA26F828C2A46300EF0981 /* SampleAPIEndPoint.swift in Sources */,
+				6B2E5E1728C348D9008A87EB /* RoverPhotosParser.swift in Sources */,
 				6B58F2BE28C10E2900160C22 /* Stylesheet.swift in Sources */,
 				6BEA26F328C290F800EF0981 /* DateInputContainerView.swift in Sources */,
 				6BEA26F128C28EB200EF0981 /* DateInputField.swift in Sources */,
