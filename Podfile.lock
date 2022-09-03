@@ -93,6 +93,7 @@ PODS:
     - Shakuro.CommonTypes (= 1.1.0)
   - SwiftLint (0.49.0)
   - SwiftyJSON (5.0.0)
+  - ZoomImageView (0.6.0)
 
 DEPENDENCIES:
   - NVActivityIndicatorView (= 5.1.1)
@@ -104,6 +105,7 @@ DEPENDENCIES:
   - Shakuro.TaskManager
   - SwiftLint
   - SwiftyJSON (= 5.0.0)
+  - ZoomImageView
 
 SPEC REPOS:
   trunk:
@@ -118,6 +120,7 @@ SPEC REPOS:
     - Shakuro.TaskManager
     - SwiftLint
     - SwiftyJSON
+    - ZoomImageView
 
 EXTERNAL SOURCES:
   Shakuro.iOS_Toolbox:
@@ -142,7 +145,8 @@ SPEC CHECKSUMS:
   Shakuro.TaskManager: 99c09ecac63e76f05b55cc36832d2f7446b3bd64
   SwiftLint: 414d099c0f305c6c73e56139efb468666e535ece
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  ZoomImageView: 2a88d0c10ad30b9a06c8f5660d51623fb32beed5
 
-PODFILE CHECKSUM: 955dab6cfb9fbca76f7f662509e748709e4ff630
+PODFILE CHECKSUM: f4b1e5d1754f9ee5d1f68264e5809311b4a15de0
 
 COCOAPODS: 1.11.3

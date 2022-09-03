@@ -12,6 +12,7 @@ target 'SampleProject' do
   pod 'SDWebImage', '5.10.4'
   pod 'Shakuro.iOS_Toolbox', :git => 'https://gitlab.com/shakuro-public/ios_toolbox.git', :commit => 'b447d2422d321098218095af47636fe12652230a'
   pod 'SwiftLint'
+  pod 'ZoomImageView'
 
 end
 

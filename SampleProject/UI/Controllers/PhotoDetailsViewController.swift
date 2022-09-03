@@ -3,6 +3,7 @@
 //
 
 import UIKit
+import ZoomImageView
 
 class PhotoDetailsViewController: UIViewController {
 
@@ -17,7 +18,7 @@ class PhotoDetailsViewController: UIViewController {
     }
 
     private let photoNavigationView: PhotoDetailsNavigationViewContainer = PhotoDetailsNavigationViewContainer()
-    private let photoImageView: UIImageView = UIImageView()
+    private let zoomImageView: ZoomImageView = ZoomImageView()
 
     private var photo: RoverPhoto?
 
@@ -39,19 +40,19 @@ class PhotoDetailsViewController: UIViewController {
             actualSelf.navigationController?.popViewController(animated: true)
         }
 
-        photoImageView.layer.masksToBounds = true
-        photoImageView.layer.cornerRadius = 8.0
-        photoImageView.contentMode = .scaleAspectFill
-        photoImageView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(photoImageView)
-        photoImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16.0).isActive = true
-        photoImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16.0).isActive = true
-        photoImageView.topAnchor.constraint(equalTo: photoNavigationView.bottomAnchor, constant: 16.0).isActive = true
-        photoImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -34.0).isActive = true
+        zoomImageView.layer.masksToBounds = true
+        zoomImageView.layer.cornerRadius = 8.0
+        zoomImageView.contentMode = .scaleAspectFill
+        zoomImageView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(zoomImageView)
+        zoomImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16.0).isActive = true
+        zoomImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16.0).isActive = true
+        zoomImageView.topAnchor.constraint(equalTo: photoNavigationView.bottomAnchor, constant: 16.0).isActive = true
+        zoomImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -34.0).isActive = true
 
         if let actualPhoto = photo {
             photoNavigationView.navigationView.setup(subtitle: "\(actualPhoto.identifier)")
-            photoImageView.setImageWithURL(actualPhoto.url, placeholderImage: UIImage(named: "placeholder"))
+            zoomImageView.imageView.setImageWithURL(actualPhoto.url, placeholderImage: UIImage(named: "placeholder"))
         }
     }
 
