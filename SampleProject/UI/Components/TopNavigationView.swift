@@ -35,6 +35,8 @@ class TopNavigationView: UIView {
         containerView.heightAnchor.constraint(equalToConstant: 46.0).isActive = true
 
         backButton.translatesAutoresizingMaskIntoConstraints = false
+        backButton.setImage(UIImage(named: "back"), for: .normal)
+        backButton.tintColor = Stylesheet.Color.black
         backButton.addTarget(self, action: #selector(backButtonPressed(_:)), for: .touchUpInside)
         containerView.addSubview(backButton)
         backButton.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
@@ -62,8 +64,11 @@ class TopNavigationView: UIView {
         contentStackView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
         contentStackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
 
+        titleLabel.font = Stylesheet.FontFace.navigationBold
+        subtitleLabel.font = Stylesheet.FontFace.terminal14
         [titleLabel, subtitleLabel].forEach({ (title) in
             title.backgroundColor = UIColor.clear
+            title.textColor = Stylesheet.Color.black
             title.textAlignment = .center
             title.setContentHuggingPriority(UILayoutPriority(251.0), for: .horizontal)
             contentStackView.addArrangedSubview(title)
@@ -71,15 +76,14 @@ class TopNavigationView: UIView {
 
     }
 
-    func setup(_ title: NSAttributedString, subtitle: NSAttributedString?, backButtonImage: UIImage?) {
-        titleLabel.attributedText = title
-        backButton.setImage(backButtonImage, for: .normal)
+    func setup(_ title: String, subtitle: String?) {
+        titleLabel.text = title
         guard let actualSubtitle = subtitle else {
-            subtitleLabel.attributedText = nil
+            subtitleLabel.text = ""
             subtitleLabel.isHidden = true
             return
         }
-        subtitleLabel.attributedText = actualSubtitle
+        subtitleLabel.text = actualSubtitle
         subtitleLabel.isHidden = false
     }
 

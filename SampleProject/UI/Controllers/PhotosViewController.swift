@@ -46,17 +46,9 @@ class PhotosViewController: UIViewController {
         topNavigationView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         topNavigationView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         topNavigationView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 46.0).isActive = true
-        let titleAttr: [NSAttributedString.Key: Any] = [
-            .font: Stylesheet.FontFace.navigationBold,
-            .foregroundColor: Stylesheet.Color.black
-        ]
-        let subtitleAttr: [NSAttributedString.Key: Any] = [
-            .font: Stylesheet.FontFace.terminal14,
-            .foregroundColor: Stylesheet.Color.black
-        ]
-        let title = NSAttributedString(string: selectedCamera?.localizedName ?? "", attributes: titleAttr)
-        let subtitle = NSAttributedString(string: dateFormatter.string(from: selectedDate ?? Date()), attributes: subtitleAttr)
-        topNavigationView.navigationView.setup(title, subtitle: subtitle, backButtonImage: UIImage(named: "back"))
+        if let actualTitle = selectedCamera?.localizedName, let actualDate = selectedDate {
+            topNavigationView.navigationView.setup(actualTitle, subtitle: dateFormatter.string(from: actualDate))
+        }
         topNavigationView.navigationView.backButtonPressed = { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }
