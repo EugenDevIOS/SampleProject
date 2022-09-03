@@ -83,8 +83,9 @@ private extension DateInputField {
 
         datePickerView.datePickerMode = .date
         datePickerView.preferredDatePickerStyle = .wheels
-        datePickerView.maximumDate = Date()
+        datePickerView.maximumDate = Date().addingTimeInterval(60 * 60 * 24) // + one day from now
         datePickerView.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
+        datePickerView.setDate(Date(), animated: false)
 
         inputField.font = Stylesheet.FontFace.terminal18
         inputField.placeholder = NSLocalizedString("Choose", comment: "")
