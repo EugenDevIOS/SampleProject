@@ -27,7 +27,7 @@ class WelcomeViewController: UIViewController {
                                                                    .foregroundColor: Stylesheet.Color.black]
         title = NSLocalizedString("Select Camera and Date", comment: "")
 
-        interactor = WelcomeInteractor()
+        interactor = WelcomeInteractor(output: self, taskManager: SampleTaskManager())
 
         backgroundImage.contentMode = .scaleToFill
         backgroundImage.clipsToBounds = true
@@ -66,7 +66,6 @@ class WelcomeViewController: UIViewController {
         contentStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24.0).isActive = true
         contentStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24.0).isActive = true
         contentStackView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        contentStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
 
         cameraInputContainerView.translatesAutoresizingMaskIntoConstraints = false
         cameraInputContainerView.setTitle(NSLocalizedString("Rover Camera", comment: ""))
@@ -92,7 +91,27 @@ class WelcomeViewController: UIViewController {
         exploreButton.topAnchor.constraint(equalTo: contentStackView.bottomAnchor, constant: 40.0).isActive = true
         exploreButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24.0).isActive = true
         exploreButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24.0).isActive = true
+        exploreButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         exploreButton.heightAnchor.constraint(equalToConstant: 60.0).isActive = true
+    }
+
+}
+
+extension WelcomeViewController: WelcomeInteractorOutput {
+
+    func willSendServerRequest() {
+        print("willSendServerRequest")
+    }
+
+    func interactor(_ interactor: WelcomeInteractor, loadedPhotos: [RoverPhoto]) {
+        print(loadedPhotos.count)
+    }
+
+    func interactor(_ interactor: WelcomeInteractor, didReceiveResponseWithError error: Error?) {
+        guard let actualError = error else {
+            return
+        }
+        print(AppError(actualError).errorDescription())
     }
 
 }
@@ -102,6 +121,12 @@ class WelcomeViewController: UIViewController {
 private extension WelcomeViewController {
 
     @objc func exploreButtonTapped(_ sender: UIButton) {
+        guard let selectedDate = dateInputContainerView.inputField.selectedDate,
+              let selectedCamera: WelcomeInteractor.CameraType = cameraInputContainerView.inputField.getSelectedItem() else {
+            return
+        }
+        interactor.getRoverPhotos(info: RoverPhotosSearchInfo(date: selectedDate,
+                                                              camera: selectedCamera))
     }
 
 }

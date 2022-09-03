@@ -3,6 +3,13 @@
 //
 
 import Foundation
+import Shakuro_TaskManager
+
+protocol WelcomeInteractorOutput: AnyObject {
+    func willSendServerRequest()
+    func interactor(_ interactor: WelcomeInteractor, loadedPhotos: [RoverPhoto])
+    func interactor(_ interactor: WelcomeInteractor, didReceiveResponseWithError error: Error?)
+}
 
 final class WelcomeInteractor {
 
@@ -38,6 +45,45 @@ final class WelcomeInteractor {
             }
         }
 
+    }
+
+    private weak var output: WelcomeInteractorOutput?
+
+    private var roverPhotosTask: Task<[RoverPhoto]>?
+
+    private let taskManager: SampleTaskManagerProtocol
+
+    init(output: WelcomeInteractorOutput, taskManager: SampleTaskManagerProtocol) {
+        self.output = output
+        self.taskManager = taskManager
+    }
+
+}
+
+// MARK: - Public
+
+extension WelcomeInteractor {
+
+    func getRoverPhotos(info: RoverPhotosSearchInfo) {
+        output?.willSendServerRequest()
+        roverPhotosTask?.cancel()
+        roverPhotosTask = nil
+        let task = taskManager.getRoverPhotos(info: info)
+        roverPhotosTask = task
+        task.onComplete(queue: .main, closure: { [weak self] (_, result) in
+            guard let actualSelf = self, task === actualSelf.roverPhotosTask else {
+                return
+            }
+            actualSelf.roverPhotosTask = nil
+            switch result {
+            case .success(result: let result):
+                actualSelf.output?.interactor(actualSelf, loadedPhotos: result)
+            case .cancelled:
+                break
+            case .failure(error: let error):
+                actualSelf.output?.interactor(actualSelf, didReceiveResponseWithError: error)
+            }
+        })
     }
 
 }
