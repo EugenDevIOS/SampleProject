@@ -115,8 +115,10 @@ extension WelcomeViewController: WelcomeInteractorOutput {
 
     func interactor(_ interactor: WelcomeInteractor, loadedPhotos: [RoverPhoto]) {
         activityIndicatorView.setHidden(true, animated: true)
-        guard let selectedDate = dateInputContainerView.inputField.selectedDate,
+        guard !loadedPhotos.isEmpty,
+              let selectedDate = dateInputContainerView.inputField.selectedDate,
               let selectedCamera: WelcomeInteractor.CameraType = cameraInputContainerView.inputField.getSelectedItem() else {
+            showAlert(with: NSLocalizedString("Unfortunately no photos were found, try changing the date or camera", comment: ""))
             return
         }
         let viewController = PhotosViewController.instantiateViewController(option: PhotosViewController.Option(photos: loadedPhotos,
@@ -138,6 +140,16 @@ extension WelcomeViewController: WelcomeInteractorOutput {
 // MARK: - Private
 
 private extension WelcomeViewController {
+
+    func showAlert(with text: String) {
+        let action = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
+                                   style: .default)
+        let controller = UIAlertController(title: "Ooops",
+                                           message: text,
+                                           preferredStyle: .alert)
+        controller.addAction(action)
+        present(controller, animated: true)
+    }
 
     func showError(_ error: AppError) {
         let action = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
