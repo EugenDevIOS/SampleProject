@@ -53,18 +53,6 @@ class DateInputField: UIView {
 
 }
 
-// MARK: - UITextFieldDelegate
-
-extension DateInputField: UITextFieldDelegate {
-
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-    }
-
-    func textFieldDidEndEditing(_ textField: UITextField) {
-    }
-
-}
-
 // MARK: - Private
 
 private extension DateInputField {
@@ -90,7 +78,6 @@ private extension DateInputField {
         inputField.font = Stylesheet.FontFace.terminal18
         inputField.placeholder = NSLocalizedString("Choose", comment: "")
         inputField.borderStyle = .none
-        inputField.delegate = self
         inputField.translatesAutoresizingMaskIntoConstraints = false
         inputField.keyboardAppearance = .dark
         inputField.tintColor = UIColor.clear
