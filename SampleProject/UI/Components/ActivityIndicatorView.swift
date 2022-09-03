@@ -1,5 +1,5 @@
-import UIKit
 import NVActivityIndicatorView
+import UIKit
 
 enum ActivityIndicatorSize {
     static let big: CGSize = CGSize(width: 60, height: 60)

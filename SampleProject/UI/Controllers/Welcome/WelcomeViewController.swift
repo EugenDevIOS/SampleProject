@@ -115,6 +115,14 @@ extension WelcomeViewController: WelcomeInteractorOutput {
 
     func interactor(_ interactor: WelcomeInteractor, loadedPhotos: [RoverPhoto]) {
         activityIndicatorView.setHidden(true, animated: true)
+        guard let selectedDate = dateInputContainerView.inputField.selectedDate,
+              let selectedCamera: WelcomeInteractor.CameraType = cameraInputContainerView.inputField.getSelectedItem() else {
+            return
+        }
+        let viewController = PhotosViewController.instantiateViewController(option: PhotosViewController.Option(photos: loadedPhotos,
+                                                                                                                selectedDate: selectedDate,
+                                                                                                                selectedCamera: selectedCamera))
+        navigationController?.pushViewController(viewController, animated: true)
     }
 
     func interactor(_ interactor: WelcomeInteractor, didReceiveResponseWithError error: AppError?) {
