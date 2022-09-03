@@ -24,7 +24,7 @@ class DateInputField: UIView {
         }
     }
 
-    private(set) var selectedDate: Date?
+    private(set) var selectedDate: Date? = Date()
 
     private let inputField: UITextField = UITextField()
     private let arrowIconImageView: UIImageView = UIImageView()
