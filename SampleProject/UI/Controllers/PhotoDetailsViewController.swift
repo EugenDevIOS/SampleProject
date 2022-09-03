@@ -39,6 +39,12 @@ class PhotoDetailsViewController: UIViewController {
             }
             actualSelf.navigationController?.popViewController(animated: true)
         }
+        photoNavigationView.navigationView.shareButtonPressed = { [weak self] in
+            guard let actualSelf = self else {
+                return
+            }
+            actualSelf.sharePhoto()
+        }
 
         zoomImageView.layer.masksToBounds = true
         zoomImageView.layer.cornerRadius = 8.0
@@ -54,6 +60,14 @@ class PhotoDetailsViewController: UIViewController {
             photoNavigationView.navigationView.setup(subtitle: "\(actualPhoto.identifier)")
             zoomImageView.imageView.setImageWithURL(actualPhoto.url, placeholderImage: UIImage(named: "placeholder"))
         }
+    }
+
+    private func sharePhoto() {
+        guard let actualPhoto = zoomImageView.image else {
+            return
+        }
+        let viewController = UIActivityViewController(activityItems: [actualPhoto], applicationActivities: nil)
+        present(viewController, animated: true)
     }
 
 }
