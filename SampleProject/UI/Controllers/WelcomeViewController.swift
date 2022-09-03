@@ -16,6 +16,8 @@ class WelcomeViewController: UIViewController {
 
     private let exploreButton: RoundedButton = RoundedButton()
 
+    private let activityIndicatorView: ActivityIndicatorView = ActivityIndicatorView()
+
     private var interactor: WelcomeInteractor!
 
     private let backgroundImage = UIImageView()
@@ -93,6 +95,14 @@ class WelcomeViewController: UIViewController {
         exploreButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24.0).isActive = true
         exploreButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         exploreButton.heightAnchor.constraint(equalToConstant: 60.0).isActive = true
+
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(activityIndicatorView)
+        activityIndicatorView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        activityIndicatorView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        activityIndicatorView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        activityIndicatorView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        activityIndicatorView.isHidden = true
     }
 
 }
@@ -100,18 +110,19 @@ class WelcomeViewController: UIViewController {
 extension WelcomeViewController: WelcomeInteractorOutput {
 
     func willSendServerRequest() {
-        print("willSendServerRequest")
+        activityIndicatorView.setHidden(false, animated: true)
     }
 
     func interactor(_ interactor: WelcomeInteractor, loadedPhotos: [RoverPhoto]) {
-        print(loadedPhotos.count)
+        activityIndicatorView.setHidden(true, animated: true)
     }
 
-    func interactor(_ interactor: WelcomeInteractor, didReceiveResponseWithError error: Error?) {
+    func interactor(_ interactor: WelcomeInteractor, didReceiveResponseWithError error: AppError?) {
+        activityIndicatorView.setHidden(true, animated: true)
         guard let actualError = error else {
             return
         }
-        print(AppError(actualError).errorDescription())
+        showError(actualError)
     }
 
 }
@@ -119,6 +130,16 @@ extension WelcomeViewController: WelcomeInteractorOutput {
 // MARK: - Private
 
 private extension WelcomeViewController {
+
+    func showError(_ error: AppError) {
+        let action = UIAlertAction(title: NSLocalizedString("OK", comment: ""),
+                                   style: .default)
+        let controller = UIAlertController(title: error.errorTitle(),
+                                           message: error.errorDescription(),
+                                           preferredStyle: .alert)
+        controller.addAction(action)
+        present(controller, animated: true)
+    }
 
     @objc func exploreButtonTapped(_ sender: UIButton) {
         guard let selectedDate = dateInputContainerView.inputField.selectedDate,

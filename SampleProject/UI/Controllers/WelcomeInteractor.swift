@@ -8,7 +8,7 @@ import Shakuro_TaskManager
 protocol WelcomeInteractorOutput: AnyObject {
     func willSendServerRequest()
     func interactor(_ interactor: WelcomeInteractor, loadedPhotos: [RoverPhoto])
-    func interactor(_ interactor: WelcomeInteractor, didReceiveResponseWithError error: Error?)
+    func interactor(_ interactor: WelcomeInteractor, didReceiveResponseWithError error: AppError?)
 }
 
 final class WelcomeInteractor {
@@ -81,7 +81,7 @@ extension WelcomeInteractor {
             case .cancelled:
                 break
             case .failure(error: let error):
-                actualSelf.output?.interactor(actualSelf, didReceiveResponseWithError: error)
+                actualSelf.output?.interactor(actualSelf, didReceiveResponseWithError: AppError(error))
             }
         })
     }
