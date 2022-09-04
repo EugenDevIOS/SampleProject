@@ -125,6 +125,10 @@ class WelcomeViewController: UIViewController {
 
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         keyboardHandler?.isActive = true
@@ -136,6 +140,8 @@ class WelcomeViewController: UIViewController {
     }
 
 }
+
+// MARK: - WelcomeInteractorOutput
 
 extension WelcomeViewController: WelcomeInteractorOutput {
 

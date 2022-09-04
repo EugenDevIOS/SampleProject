@@ -12,8 +12,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else {
             return
         }
-        let cameraRollViewController = WelcomeViewController()
-        let rootViewController = UINavigationController(rootViewController: cameraRollViewController)
+        let welcomeViewController = WelcomeViewController()
+        let rootViewController = UINavigationController(rootViewController: welcomeViewController)
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()

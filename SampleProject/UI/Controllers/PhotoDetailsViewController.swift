@@ -62,6 +62,12 @@ class PhotoDetailsViewController: UIViewController {
         }
     }
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
+    // MARK: - Private
+
     private func sharePhoto() {
         guard let actualPhoto = zoomImageView.image else {
             return

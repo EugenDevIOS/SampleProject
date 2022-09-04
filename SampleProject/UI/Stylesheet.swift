@@ -6,19 +6,6 @@ import UIKit
 
 public enum Stylesheet {
 
-    // MARK: - Screen
-
-    enum Screen {
-        static let screenSize: CGSize = {
-            var nativeBounds = UIScreen.main.nativeBounds.size
-            nativeBounds.width /= UIScreen.main.nativeScale
-            nativeBounds.height /= UIScreen.main.nativeScale
-            return nativeBounds
-        }()
-        static let screenScale: CGFloat = UIScreen.main.scale
-        static let singlePixelSize: CGFloat = 1.0 / screenScale
-    }
-
     // MARK: - Colors
 
     enum Color {

@@ -32,7 +32,7 @@ class DateInputContainerView: UIView {
         titleLabel.font = Stylesheet.FontFace.terminal14
         titleLabel.textColor = Stylesheet.Color.black
         addSubview(titleLabel)
-        let topAnchor = topAnchor.constraint(equalTo: topAnchor)
+        let topAnchor = titleLabel.topAnchor.constraint(equalTo: topAnchor)
         topAnchor.priority = UILayoutPriority(999)
         topAnchor.isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true

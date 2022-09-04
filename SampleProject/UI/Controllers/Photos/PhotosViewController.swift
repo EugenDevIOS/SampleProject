@@ -69,12 +69,19 @@ class PhotosViewController: UIViewController {
         contentCollectionView.dataSource = self
         contentCollectionView.delegate = self
     }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .darkContent
+    }
+
     override func viewSafeAreaInsetsDidChange() {
         super.viewSafeAreaInsetsDidChange()
         contentCollectionView.collectionViewLayout.invalidateLayout()
     }
 
 }
+
+// MARK: - UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
 
 extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
