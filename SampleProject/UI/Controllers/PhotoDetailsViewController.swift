@@ -8,19 +8,22 @@ import ZoomImageView
 class PhotoDetailsViewController: UIViewController {
 
     struct Option {
-        let photo: RoverPhoto
+        let imageIdentifier: String
+        let image: UIImage
     }
 
     static func instantiateViewController(option: PhotoDetailsViewController.Option) -> PhotoDetailsViewController {
         let viewController = PhotoDetailsViewController()
-        viewController.photo = option.photo
+        viewController.imageIdentifier = option.imageIdentifier
+        viewController.image = option.image
         return viewController
     }
 
     private let photoNavigationView: PhotoDetailsNavigationViewContainer = PhotoDetailsNavigationViewContainer()
     private let zoomImageView: ZoomImageView = ZoomImageView()
 
-    private var photo: RoverPhoto?
+    private var imageIdentifier: String = ""
+    private var image: UIImage = UIImage()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,11 +58,8 @@ class PhotoDetailsViewController: UIViewController {
         zoomImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16.0).isActive = true
         zoomImageView.topAnchor.constraint(equalTo: photoNavigationView.bottomAnchor, constant: 16.0).isActive = true
         zoomImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -34.0).isActive = true
-
-        if let actualPhoto = photo {
-            photoNavigationView.navigationView.setup(subtitle: "\(actualPhoto.identifier)")
-            zoomImageView.imageView.setImageWithURL(actualPhoto.url, placeholderImage: UIImage(named: "placeholder"))
-        }
+        photoNavigationView.navigationView.setup(subtitle: imageIdentifier)
+        zoomImageView.image = image
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -69,10 +69,7 @@ class PhotoDetailsViewController: UIViewController {
     // MARK: - Private
 
     private func sharePhoto() {
-        guard let actualPhoto = zoomImageView.image else {
-            return
-        }
-        let viewController = UIActivityViewController(activityItems: [actualPhoto], applicationActivities: nil)
+        let viewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         present(viewController, animated: true)
     }
 

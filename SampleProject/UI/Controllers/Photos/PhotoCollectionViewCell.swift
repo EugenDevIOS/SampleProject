@@ -6,6 +6,10 @@ import UIKit
 
 class PhotoCollectionViewCell: UICollectionViewCell {
 
+    var image: UIImage? {
+        return photoImageView.image
+    }
+
     static let identifier: String = "PhotoCollectionViewCell"
 
     private var photoImageView: UIImageView = UIImageView()
