@@ -111,8 +111,12 @@ extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDele
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let photo = photos[indexPath.item]
-        let viewController = PhotoDetailsViewController.instantiateViewController(option: PhotoDetailsViewController.Option(photo: photo))
+        guard let selectedCell = collectionView.cellForItem(at: indexPath) as? PhotoCollectionViewCell,
+              let image = selectedCell.image else {
+            return
+        }
+        let imageIdentifier = photos[indexPath.item].identifier
+        let viewController = PhotoDetailsViewController.instantiateViewController(option: PhotoDetailsViewController.Option(imageIdentifier: "\(imageIdentifier)", image: image))
         navigationController?.pushViewController(viewController, animated: true)
     }
 
