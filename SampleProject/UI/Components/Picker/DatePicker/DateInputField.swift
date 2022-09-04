@@ -71,6 +71,12 @@ private extension DateInputField {
 
         datePickerView.datePickerMode = .date
         datePickerView.preferredDatePickerStyle = .wheels
+        var landingDateComponents = DateComponents()
+        landingDateComponents.year = 2012
+        landingDateComponents.month = 08
+        landingDateComponents.day = 06
+        let minimumDate = Calendar(identifier: .gregorian).date(from: landingDateComponents)
+        datePickerView.minimumDate = minimumDate
         datePickerView.maximumDate = Date().addingTimeInterval(60 * 60 * 24) // + one day from now
         datePickerView.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
         datePickerView.setDate(Date(), animated: false)
