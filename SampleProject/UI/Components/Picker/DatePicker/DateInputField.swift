@@ -71,6 +71,7 @@ private extension DateInputField {
 
         datePickerView.datePickerMode = .date
         datePickerView.preferredDatePickerStyle = .wheels
+        datePickerView.timeZone = TimeZone(secondsFromGMT: 0)
         var landingDateComponents = DateComponents()
         landingDateComponents.year = 2012
         landingDateComponents.month = 08
