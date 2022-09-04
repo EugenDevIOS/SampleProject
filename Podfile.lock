@@ -1,0 +1,152 @@
+PODS:
+  - Alamofire (5.1.0)
+  - NVActivityIndicatorView (5.1.1):
+    - NVActivityIndicatorView/Base (= 5.1.1)
+  - NVActivityIndicatorView/Base (5.1.1)
+  - pop (1.0.12)
+  - R.swift (5.2.2):
+    - R.swift.Library (~> 5.2.0)
+  - R.swift.Library (5.2.0)
+  - SDWebImage (5.10.4):
+    - SDWebImage/Core (= 5.10.4)
+  - SDWebImage/Core (5.10.4)
+  - Shakuro.CommonTypes (1.1.0)
+  - Shakuro.HTTPClient (1.1.0):
+    - Alamofire (= 5.1.0)
+    - Shakuro.CommonTypes (= 1.1.0)
+  - Shakuro.iOS_Toolbox (0.25.0):
+    - Shakuro.CommonTypes (= 1.1.0)
+    - Shakuro.iOS_Toolbox/ContainerViewController (= 0.25.0)
+    - Shakuro.iOS_Toolbox/DecelerationHelper (= 0.25.0)
+    - Shakuro.iOS_Toolbox/Device (= 0.25.0)
+    - Shakuro.iOS_Toolbox/DraggableDetailsOverlay (= 0.25.0)
+    - Shakuro.iOS_Toolbox/EMail (= 0.25.0)
+    - Shakuro.iOS_Toolbox/EventHandler (= 0.25.0)
+    - Shakuro.iOS_Toolbox/Exceptions (= 0.25.0)
+    - Shakuro.iOS_Toolbox/HorizontalInfinityScrollView (= 0.25.0)
+    - Shakuro.iOS_Toolbox/ImageProcessing (= 0.25.0)
+    - Shakuro.iOS_Toolbox/Keyboard (= 0.25.0)
+    - Shakuro.iOS_Toolbox/Keychain (= 0.25.0)
+    - Shakuro.iOS_Toolbox/Labels (= 0.25.0)
+    - Shakuro.iOS_Toolbox/LoopedScrollView (= 0.25.0)
+    - Shakuro.iOS_Toolbox/PlaceholderTextView (= 0.25.0)
+    - Shakuro.iOS_Toolbox/PoliteCoreData (= 0.25.0)
+    - Shakuro.iOS_Toolbox/PullToRefresh (= 0.25.0)
+    - Shakuro.iOS_Toolbox/Router (= 0.25.0)
+    - Shakuro.iOS_Toolbox/ScrollableTabs (= 0.25.0)
+    - Shakuro.iOS_Toolbox/Settings (= 0.25.0)
+    - Shakuro.iOS_Toolbox/Utils (= 0.25.0)
+    - Shakuro.iOS_Toolbox/Vibrations (= 0.25.0)
+    - Shakuro.iOS_Toolbox/VideoCamera (= 0.25.0)
+  - Shakuro.iOS_Toolbox/ContainerViewController (0.25.0):
+    - Shakuro.CommonTypes (= 1.1.0)
+  - Shakuro.iOS_Toolbox/DecelerationHelper (0.25.0):
+    - Shakuro.CommonTypes (= 1.1.0)
+  - Shakuro.iOS_Toolbox/Device (0.25.0):
+    - Shakuro.CommonTypes (= 1.1.0)
+  - Shakuro.iOS_Toolbox/DraggableDetailsOverlay (0.25.0):
+    - Shakuro.CommonTypes (= 1.1.0)
+    - Shakuro.iOS_Toolbox/DecelerationHelper
+  - Shakuro.iOS_Toolbox/EMail (0.25.0):
+    - Shakuro.CommonTypes (= 1.1.0)
+  - Shakuro.iOS_Toolbox/EventHandler (0.25.0):
+    - Shakuro.CommonTypes (= 1.1.0)
+  - Shakuro.iOS_Toolbox/Exceptions (0.25.0):
+    - Shakuro.CommonTypes (= 1.1.0)
+  - Shakuro.iOS_Toolbox/HorizontalInfinityScrollView (0.25.0):
+    - pop (= 1.0.12)
+    - Shakuro.CommonTypes (= 1.1.0)
+    - Shakuro.iOS_Toolbox/DecelerationHelper
+  - Shakuro.iOS_Toolbox/ImageProcessing (0.25.0):
+    - Shakuro.CommonTypes (= 1.1.0)
+  - Shakuro.iOS_Toolbox/Keyboard (0.25.0):
+    - Shakuro.CommonTypes (= 1.1.0)
+  - Shakuro.iOS_Toolbox/Keychain (0.25.0):
+    - Shakuro.CommonTypes (= 1.1.0)
+  - Shakuro.iOS_Toolbox/Labels (0.25.0):
+    - Shakuro.CommonTypes (= 1.1.0)
+  - Shakuro.iOS_Toolbox/LoopedScrollView (0.25.0):
+    - Shakuro.CommonTypes (= 1.1.0)
+  - Shakuro.iOS_Toolbox/PlaceholderTextView (0.25.0):
+    - Shakuro.CommonTypes (= 1.1.0)
+  - Shakuro.iOS_Toolbox/PoliteCoreData (0.25.0):
+    - Shakuro.CommonTypes (= 1.1.0)
+  - Shakuro.iOS_Toolbox/PullToRefresh (0.25.0):
+    - Shakuro.CommonTypes (= 1.1.0)
+  - Shakuro.iOS_Toolbox/Router (0.25.0):
+    - Shakuro.CommonTypes (= 1.1.0)
+    - Shakuro.iOS_Toolbox/ContainerViewController
+  - Shakuro.iOS_Toolbox/ScrollableTabs (0.25.0):
+    - Shakuro.CommonTypes (= 1.1.0)
+  - Shakuro.iOS_Toolbox/Settings (0.25.0):
+    - Shakuro.CommonTypes (= 1.1.0)
+  - Shakuro.iOS_Toolbox/Utils (0.25.0):
+    - Shakuro.CommonTypes (= 1.1.0)
+  - Shakuro.iOS_Toolbox/Vibrations (0.25.0):
+    - Shakuro.CommonTypes (= 1.1.0)
+    - Shakuro.iOS_Toolbox/Device
+  - Shakuro.iOS_Toolbox/VideoCamera (0.25.0):
+    - Shakuro.CommonTypes (= 1.1.0)
+    - Shakuro.iOS_Toolbox/Device
+    - Shakuro.iOS_Toolbox/ImageProcessing
+  - Shakuro.TaskManager (1.1.0):
+    - Shakuro.CommonTypes (= 1.1.0)
+  - SwiftLint (0.49.0)
+  - SwiftyJSON (5.0.0)
+  - ZoomImageView (0.6.0)
+
+DEPENDENCIES:
+  - NVActivityIndicatorView (= 5.1.1)
+  - R.swift (= 5.2.2)
+  - SDWebImage (= 5.10.4)
+  - Shakuro.CommonTypes
+  - Shakuro.HTTPClient
+  - Shakuro.iOS_Toolbox (from `https://gitlab.com/shakuro-public/ios_toolbox.git`, commit `b447d2422d321098218095af47636fe12652230a`)
+  - Shakuro.TaskManager
+  - SwiftLint
+  - SwiftyJSON (= 5.0.0)
+  - ZoomImageView
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - NVActivityIndicatorView
+    - pop
+    - R.swift
+    - R.swift.Library
+    - SDWebImage
+    - Shakuro.CommonTypes
+    - Shakuro.HTTPClient
+    - Shakuro.TaskManager
+    - SwiftLint
+    - SwiftyJSON
+    - ZoomImageView
+
+EXTERNAL SOURCES:
+  Shakuro.iOS_Toolbox:
+    :commit: b447d2422d321098218095af47636fe12652230a
+    :git: https://gitlab.com/shakuro-public/ios_toolbox.git
+
+CHECKOUT OPTIONS:
+  Shakuro.iOS_Toolbox:
+    :commit: b447d2422d321098218095af47636fe12652230a
+    :git: https://gitlab.com/shakuro-public/ios_toolbox.git
+
+SPEC CHECKSUMS:
+  Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
+  NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
+  pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
+  R.swift: 7c52cdc57a66840ffe6cbd8a823d732059d42a32
+  R.swift.Library: 5ba4f1631300caf9a4d890186930da85d540769d
+  SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
+  Shakuro.CommonTypes: ce6dc9fe3a068a5e663a554d433703e6f4ea6a9f
+  Shakuro.HTTPClient: 9c4a7bab23307d252403ab4c332e1a7fac13d5cf
+  Shakuro.iOS_Toolbox: 1e7132dc02cf544a6bfa6a035abbd98c07bf8780
+  Shakuro.TaskManager: 99c09ecac63e76f05b55cc36832d2f7446b3bd64
+  SwiftLint: 414d099c0f305c6c73e56139efb468666e535ece
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  ZoomImageView: 2a88d0c10ad30b9a06c8f5660d51623fb32beed5
+
+PODFILE CHECKSUM: f4b1e5d1754f9ee5d1f68264e5809311b4a15de0
+
+COCOAPODS: 1.11.3
