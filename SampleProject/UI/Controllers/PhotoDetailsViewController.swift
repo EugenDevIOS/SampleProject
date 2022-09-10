@@ -19,8 +19,9 @@ class PhotoDetailsViewController: UIViewController {
         return viewController
     }
 
+    let zoomImageView: ZoomImageView = ZoomImageView()
+
     private let photoNavigationView: PhotoDetailsNavigationViewContainer = PhotoDetailsNavigationViewContainer()
-    private let zoomImageView: ZoomImageView = ZoomImageView()
 
     private var imageIdentifier: String = ""
     private var image: UIImage = UIImage()
@@ -40,7 +41,7 @@ class PhotoDetailsViewController: UIViewController {
             guard let actualSelf = self else {
                 return
             }
-            actualSelf.navigationController?.popViewController(animated: true)
+            actualSelf.dismiss(animated: true)
         }
         photoNavigationView.navigationView.shareButtonPressed = { [weak self] in
             guard let actualSelf = self else {
