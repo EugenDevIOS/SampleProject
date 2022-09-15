@@ -6,13 +6,12 @@ import UIKit
 
 class PhotoCollectionViewCell: UICollectionViewCell {
 
+    var photoImageView: UIImageView = UIImageView()
     var image: UIImage? {
         return photoImageView.image
     }
 
     static let identifier: String = "PhotoCollectionViewCell"
-
-    private var photoImageView: UIImageView = UIImageView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)

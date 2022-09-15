@@ -12,6 +12,9 @@ class PhotosViewController: UIViewController {
         let selectedCamera: WelcomeInteractor.CameraType
     }
 
+    var selectedCell: PhotoCollectionViewCell?
+    var selectedCellImageViewSnapshot: UIView?
+
     private let topNavigationView: TopNavigationViewContainer = TopNavigationViewContainer()
 
     private var contentCollectionView: UICollectionView!
@@ -111,13 +114,46 @@ extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDele
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let selectedCell = collectionView.cellForItem(at: indexPath) as? PhotoCollectionViewCell,
-              let image = selectedCell.image else {
+        guard let aSelectedCell = collectionView.cellForItem(at: indexPath) as? PhotoCollectionViewCell,
+              let image = aSelectedCell.image else {
             return
         }
+        selectedCell = aSelectedCell
+        selectedCellImageViewSnapshot = selectedCell?.photoImageView.snapshotView(afterScreenUpdates: false)
         let imageIdentifier = photos[indexPath.item].identifier
         let viewController = PhotoDetailsViewController.instantiateViewController(option: PhotoDetailsViewController.Option(imageIdentifier: "\(imageIdentifier)", image: image))
-        navigationController?.pushViewController(viewController, animated: true)
+        viewController.transitioningDelegate = self
+        viewController.modalPresentationStyle = .custom
+        present(viewController, animated: true)
+    }
+
+}
+
+// MARK: - UIViewControllerTransitioningDelegate
+
+extension PhotosViewController: UIViewControllerTransitioningDelegate {
+
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        guard let firstViewController = source as? PhotosViewController,
+              let secondViewController = presented as? PhotoDetailsViewController,
+              let selectedCellImageViewSnapshot = firstViewController.selectedCellImageViewSnapshot else {
+            return nil
+        }
+        return PhotoAnimator(presentationType: .present,
+                             firstViewController: firstViewController,
+                             secondViewController: secondViewController,
+                             selectedCellImageViewSnapshot: selectedCellImageViewSnapshot)
+    }
+
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        guard let secondViewController = dismissed as? PhotoDetailsViewController,
+              let selectedCellImageViewSnapshot = selectedCellImageViewSnapshot else {
+            return nil
+        }
+        return PhotoAnimator(presentationType: .dismiss,
+                             firstViewController: self,
+                             secondViewController: secondViewController,
+                             selectedCellImageViewSnapshot: selectedCellImageViewSnapshot)
     }
 
 }
