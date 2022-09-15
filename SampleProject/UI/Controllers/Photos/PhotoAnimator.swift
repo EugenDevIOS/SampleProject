@@ -73,7 +73,6 @@ final class PhotoAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         toView.alpha = 0
         [backgroundView, selectedCellImageViewSnapshot, controllerImageViewSnapshot].forEach({ containerView.addSubview($0) })
 
-        // TODO: - replace secondViewController.zoomImageView.convert... on secondViewController.zoomImageView.imageView.convert
         let controllerImageViewRect = secondViewController.zoomImageView.convert(secondViewController.zoomImageView.bounds, to: window)
         let centerImageViewRect = CGRect(x: controllerImageViewRect.midX / 2,
                                          y: controllerImageViewRect.midY / 2,
@@ -91,27 +90,27 @@ final class PhotoAnimator: NSObject, UIViewControllerAnimatedTransitioning {
                                 animations: {
             if isPresenting {
                 UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.3) {
-                    self.selectedCellImageViewSnapshot.frame = isPresenting ? centerImageViewRect : self.cellImageViewRect
-                    controllerImageViewSnapshot.frame = isPresenting ? centerImageViewRect : self.cellImageViewRect
-                    fadeView.alpha = isPresenting ? 1 : 0
+                    self.selectedCellImageViewSnapshot.frame = centerImageViewRect
+                    controllerImageViewSnapshot.frame = centerImageViewRect
+                    fadeView.alpha = 1.0
 
                     [controllerImageViewSnapshot, self.selectedCellImageViewSnapshot].forEach {
-                        $0.layer.cornerRadius = isPresenting ? 0 : Constants.cornerRadius
+                        $0.layer.cornerRadius = 0
                     }
                 }
                 UIView.addKeyframe(withRelativeStartTime: 0.4, relativeDuration: 1) {
-                    self.selectedCellImageViewSnapshot.frame = isPresenting ? controllerImageViewRect : self.cellImageViewRect
-                    controllerImageViewSnapshot.frame = isPresenting ? controllerImageViewRect : self.cellImageViewRect
-                    fadeView.alpha = isPresenting ? 1 : 0
+                    self.selectedCellImageViewSnapshot.frame = controllerImageViewRect
+                    controllerImageViewSnapshot.frame = controllerImageViewRect
+                    fadeView.alpha = 1
                 }
             } else {
                 UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1) {
-                    self.selectedCellImageViewSnapshot.frame = isPresenting ? controllerImageViewRect : self.cellImageViewRect
-                    controllerImageViewSnapshot.frame = isPresenting ? controllerImageViewRect : self.cellImageViewRect
-                    fadeView.alpha = isPresenting ? 1 : 0
+                    self.selectedCellImageViewSnapshot.frame = self.cellImageViewRect
+                    controllerImageViewSnapshot.frame = self.cellImageViewRect
+                    fadeView.alpha = 0
 
                     [controllerImageViewSnapshot, self.selectedCellImageViewSnapshot].forEach {
-                        $0.layer.cornerRadius = isPresenting ? 0 : Constants.cornerRadius
+                        $0.layer.cornerRadius = Constants.cornerRadius
                     }
                 }
             }
