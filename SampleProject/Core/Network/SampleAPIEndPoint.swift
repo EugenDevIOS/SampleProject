@@ -9,6 +9,7 @@ enum SampleAPIEndPoint {
 
     static let baseURL = "https://api.nasa.gov"
 
+    case curiosityInfo
     case curiosityPhoto(query: String)
 
 }
@@ -24,6 +25,8 @@ extension SampleAPIEndPoint: HTTPClientAPIEndPoint {
         let host = SampleAPIEndPoint.baseURL
 
         switch self {
+        case .curiosityInfo:
+            return "\(host)/mars-photos/api/v1/manifests/curiosity?api_key=\(apiKey)"
         case .curiosityPhoto(let query):
             let encodedQuery = query.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
             return "\(host)/mars-photos/api/v1/rovers/curiosity/photos?api_key=\(apiKey)&\(encodedQuery)"
