@@ -5,16 +5,6 @@
 import Shakuro_HTTPClient
 import SwiftyJSON
 
-struct RoverInfo {
-    let name: String
-    let landingDate: Date
-    let launchDate: Date
-    let status: String
-    let maxSol: Int
-    let maxDate: Date
-    let totalPhotos: Int
-}
-
 final class RoverInfoParser: AppAPIClientParser<RoverInfo> {
 
     override func parseForResult(_ serializedResponse: JSON, response: HTTPURLResponse?) throws -> RoverInfo {

@@ -3,7 +3,6 @@
 //
 
 import UIKit
-import ZoomImageView
 
 class PhotoDetailsViewController: UIViewController {
 
