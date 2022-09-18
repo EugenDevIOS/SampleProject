@@ -7,7 +7,7 @@ import Foundation
 import Shakuro_HTTPClient
 import Shakuro_TaskManager
 
-final class RoverPhotosOperationOptions: BaseOperationOptions {
+final class GetCuriosityPhotosOperationOptions: BaseOperationOptions {
     let apiClient: SampleAPIClient
     let searchInfo: RoverPhotosSearchInfo
 
@@ -17,7 +17,7 @@ final class RoverPhotosOperationOptions: BaseOperationOptions {
     }
 }
 
-final class RoverPhotosOperation: BaseOperation<[RoverPhoto], RoverPhotosOperationOptions> {
+final class GetCuriosityPhotosOperation: BaseOperation<[RoverPhoto], GetCuriosityPhotosOperationOptions> {
 
     private var request: Alamofire.Request?
 

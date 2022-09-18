@@ -6,7 +6,8 @@ import Foundation
 import Shakuro_TaskManager
 
 protocol SampleTaskManagerProtocol {
-    func getRoverPhotos(info: RoverPhotosSearchInfo) -> Task<[RoverPhoto]>
+    func getCuriosityInfo() -> Task<RoverInfo>
+    func getCuriosityPhotos(info: RoverPhotosSearchInfo) -> Task<[RoverPhoto]>
 }
 
 final class SampleTaskManager: TaskManager {
@@ -20,9 +21,15 @@ final class SampleTaskManager: TaskManager {
 
 extension SampleTaskManager: SampleTaskManagerProtocol {
 
-    func getRoverPhotos(info: RoverPhotosSearchInfo) -> Task<[RoverPhoto]> {
-        let opt = RoverPhotosOperationOptions(apiClient: apiClient, searchInfo: info)
-        return performOperation(operationType: RoverPhotosOperation.self,
+    func getCuriosityInfo() -> Shakuro_TaskManager.Task<RoverInfo> {
+        let opt = GetCuriosityInfoOperationOptions(apiClient: apiClient)
+        return performOperation(operationType: GetCuriosityInfoOperation.self,
+                                options: opt)
+    }
+
+    func getCuriosityPhotos(info: RoverPhotosSearchInfo) -> Task<[RoverPhoto]> {
+        let opt = GetCuriosityPhotosOperationOptions(apiClient: apiClient, searchInfo: info)
+        return performOperation(operationType: GetCuriosityPhotosOperation.self,
                                 options: opt)
     }
 

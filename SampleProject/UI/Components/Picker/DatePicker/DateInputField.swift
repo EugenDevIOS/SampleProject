@@ -51,6 +51,13 @@ class DateInputField: UIView {
         arrowIconImageView.image = image
     }
 
+    func setDates(minDate: Date, maxDate: Date) {
+        datePickerView.minimumDate = minDate
+        datePickerView.maximumDate = maxDate
+        datePickerView.setDate(maxDate, animated: true)
+        inputField.text = dateFormatter.string(from: maxDate)
+    }
+
 }
 
 // MARK: - Private

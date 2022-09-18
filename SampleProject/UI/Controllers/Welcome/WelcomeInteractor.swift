@@ -7,6 +7,7 @@ import Shakuro_TaskManager
 
 protocol WelcomeInteractorOutput: AnyObject {
     func willSendServerRequest()
+    func interactor(_ interactor: WelcomeInteractor, loadedInfo: RoverInfo)
     func interactor(_ interactor: WelcomeInteractor, loadedPhotos: [RoverPhoto])
     func interactor(_ interactor: WelcomeInteractor, didReceiveResponseWithError error: AppError?)
 }
@@ -49,7 +50,8 @@ final class WelcomeInteractor {
 
     private weak var output: WelcomeInteractorOutput?
 
-    private var roverPhotosTask: Task<[RoverPhoto]>?
+    private var curiosityInfoTask: Task<RoverInfo>?
+    private var curiosityPhotosTask: Task<[RoverPhoto]>?
 
     private let taskManager: SampleTaskManagerProtocol
 
@@ -64,17 +66,40 @@ final class WelcomeInteractor {
 
 extension WelcomeInteractor {
 
-    func getRoverPhotos(info: RoverPhotosSearchInfo) {
+    func getCuriosityInfo() {
         output?.willSendServerRequest()
-        roverPhotosTask?.cancel()
-        roverPhotosTask = nil
-        let task = taskManager.getRoverPhotos(info: info)
-        roverPhotosTask = task
+        curiosityInfoTask?.cancel()
+        curiosityInfoTask = nil
+        let task = taskManager.getCuriosityInfo()
+        curiosityInfoTask = task
         task.onComplete(queue: .main, closure: { [weak self] (_, result) in
-            guard let actualSelf = self, task === actualSelf.roverPhotosTask else {
+            guard let actualSelf = self, task === actualSelf.curiosityInfoTask else {
                 return
             }
-            actualSelf.roverPhotosTask = nil
+            actualSelf.curiosityInfoTask = nil
+            switch result {
+            case .success(result: let result):
+                actualSelf.output?.interactor(actualSelf, loadedInfo: result)
+            case .cancelled:
+                break
+            case .failure(error: let error):
+                actualSelf.output?.interactor(actualSelf, didReceiveResponseWithError: AppError(error))
+            }
+        })
+
+    }
+
+    func getCuriosityPhotos(info: RoverPhotosSearchInfo) {
+        output?.willSendServerRequest()
+        curiosityPhotosTask?.cancel()
+        curiosityPhotosTask = nil
+        let task = taskManager.getCuriosityPhotos(info: info)
+        curiosityPhotosTask = task
+        task.onComplete(queue: .main, closure: { [weak self] (_, result) in
+            guard let actualSelf = self, task === actualSelf.curiosityPhotosTask else {
+                return
+            }
+            actualSelf.curiosityPhotosTask = nil
             switch result {
             case .success(result: let result):
                 actualSelf.output?.interactor(actualSelf, loadedPhotos: result)

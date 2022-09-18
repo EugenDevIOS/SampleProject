@@ -30,7 +30,7 @@ final class RoverInfoParser: AppAPIClientParser<RoverInfo> {
               let landingDate = dateFormatter.date(from: info["landing_date"].stringValue),
               let launchDate = dateFormatter.date(from: info["launch_date"].stringValue),
               let maxDate = dateFormatter.date(from: info["max_date"].stringValue),
-              let totalPhotos = info["name"].int else {
+              let totalPhotos = info["total_photos"].int else {
             throw HTTPClient.Error.cantParseSerializedResponse(underlyingError: nil)
         }
         return RoverInfo(name: name,

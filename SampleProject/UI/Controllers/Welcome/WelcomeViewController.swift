@@ -122,7 +122,7 @@ class WelcomeViewController: UIViewController {
                 },
                 completion: nil)
         })
-
+        interactor.getCuriosityInfo()
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -147,6 +147,11 @@ extension WelcomeViewController: WelcomeInteractorOutput {
 
     func willSendServerRequest() {
         activityIndicatorView.setHidden(false, animated: true)
+    }
+
+    func interactor(_ interactor: WelcomeInteractor, loadedInfo: RoverInfo) {
+        activityIndicatorView.setHidden(true, animated: true)
+        dateInputContainerView.inputField.setDates(minDate: loadedInfo.landingDate, maxDate: loadedInfo.maxDate)
     }
 
     func interactor(_ interactor: WelcomeInteractor, loadedPhotos: [RoverPhoto]) {
@@ -202,8 +207,8 @@ private extension WelcomeViewController {
               let selectedCamera: WelcomeInteractor.CameraType = cameraInputContainerView.inputField.getSelectedItem() else {
             return
         }
-        interactor.getRoverPhotos(info: RoverPhotosSearchInfo(date: selectedDate,
-                                                              camera: selectedCamera))
+        interactor.getCuriosityPhotos(info: RoverPhotosSearchInfo(date: selectedDate,
+                                                                  camera: selectedCamera))
     }
 
 }
