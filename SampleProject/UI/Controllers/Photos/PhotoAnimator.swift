@@ -74,10 +74,6 @@ final class PhotoAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         [backgroundView, selectedCellImageViewSnapshot, controllerImageViewSnapshot].forEach({ containerView.addSubview($0) })
 
         let controllerImageViewRect = secondViewController.zoomImageView.imageView.convert(secondViewController.zoomImageView.imageView.bounds, to: window)
-//        let centerImageViewRect = CGRect(x: controllerImageViewRect.midX / 2,
-//                                         y: controllerImageViewRect.midY / 2,
-//                                         width: controllerImageViewRect.size.width / 2,
-//                                         height: controllerImageViewRect.size.height / 2)
         [selectedCellImageViewSnapshot, controllerImageViewSnapshot].forEach({
             $0.frame = isPresenting ? cellImageViewRect : controllerImageViewRect
             $0.layer.cornerRadius = isPresenting ? Constants.cornerRadius : 0

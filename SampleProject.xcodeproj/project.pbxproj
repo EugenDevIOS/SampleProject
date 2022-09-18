@@ -37,6 +37,7 @@
 		6B58F2CE28C14F7B00160C22 /* TerminalDosis-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B58F2CD28C14F7B00160C22 /* TerminalDosis-Bold.ttf */; };
 		6B69527628D7124300F609BD /* GetCuriosityInfoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B69527528D7124300F609BD /* GetCuriosityInfoOperation.swift */; };
 		6B69527828D7229800F609BD /* ZoomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B69527728D7229800F609BD /* ZoomImageView.swift */; };
+		6B9CC19F28D730DB00DE744A /* RoverInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9CC19E28D730DB00DE744A /* RoverInfo.swift */; };
 		6BB6A47428D3BA6A0006D7D1 /* RoverInfoParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB6A47328D3BA6A0006D7D1 /* RoverInfoParser.swift */; };
 		6BB6A47628D3BAC50006D7D1 /* AppAPIClientParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB6A47528D3BAC50006D7D1 /* AppAPIClientParser.swift */; };
 		6BCDC24128CD3E1D00D4AD5F /* PhotoAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCDC24028CD3E1D00D4AD5F /* PhotoAnimator.swift */; };
@@ -81,6 +82,7 @@
 		6B58F2CD28C14F7B00160C22 /* TerminalDosis-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TerminalDosis-Bold.ttf"; sourceTree = "<group>"; };
 		6B69527528D7124300F609BD /* GetCuriosityInfoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCuriosityInfoOperation.swift; sourceTree = "<group>"; };
 		6B69527728D7229800F609BD /* ZoomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomImageView.swift; sourceTree = "<group>"; };
+		6B9CC19E28D730DB00DE744A /* RoverInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverInfo.swift; sourceTree = "<group>"; };
 		6BB6A47328D3BA6A0006D7D1 /* RoverInfoParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverInfoParser.swift; sourceTree = "<group>"; };
 		6BB6A47528D3BAC50006D7D1 /* AppAPIClientParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAPIClientParser.swift; sourceTree = "<group>"; };
 		6BCDC24028CD3E1D00D4AD5F /* PhotoAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAnimator.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 		6B2E5E2028C352E6008A87EB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6B9CC19E28D730DB00DE744A /* RoverInfo.swift */,
 				6B2E5E2128C358B6008A87EB /* RoverPhoto.swift */,
 				6B2E5E1E28C352E2008A87EB /* RoverPhotosSearchInfo.swift */,
 			);
@@ -161,9 +164,9 @@
 		6B2E5E3528C3BB2C008A87EB /* Photos */ = {
 			isa = PBXGroup;
 			children = (
+				6BCDC24028CD3E1D00D4AD5F /* PhotoAnimator.swift */,
 				6B2E5E2F28C387DD008A87EB /* PhotoCollectionViewCell.swift */,
 				6B2E5E2B28C371FF008A87EB /* PhotosViewController.swift */,
-				6BCDC24028CD3E1D00D4AD5F /* PhotoAnimator.swift */,
 			);
 			path = Photos;
 			sourceTree = "<group>";
@@ -213,10 +216,10 @@
 		6B58F2C128C112C900160C22 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				6B58F2C228C112D600160C22 /* Fonts */,
 				6B58F2AD28C0F96400160C22 /* Assets.xcassets */,
-				6B58F2AF28C0F96400160C22 /* LaunchScreen.storyboard */,
 				6BEA26FC28C2ABA600EF0981 /* .swiftlint.yml */,
+				6B58F2C228C112D600160C22 /* Fonts */,
+				6B9CC1A028D7323B00DE744A /* UI */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -272,6 +275,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		6B9CC1A028D7323B00DE744A /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				6B58F2AF28C0F96400160C22 /* LaunchScreen.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		6BEA26F428C2912400EF0981 /* DatePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,10 +295,10 @@
 		6BEA26F928C2A75B00EF0981 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				6B2E5E2628C35E99008A87EB /* AppError.swift */,
+				6B2E5E2028C352E6008A87EB /* Model */,
 				6BEA26FA28C2A76100EF0981 /* Network */,
 				6B2E5E1A28C34DBB008A87EB /* TaskManager */,
-				6B2E5E2028C352E6008A87EB /* Model */,
-				6B2E5E2628C35E99008A87EB /* AppError.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -473,6 +484,7 @@
 				6B58F2A928C0F96300160C22 /* WelcomeViewController.swift in Sources */,
 				6B2E5E1C28C34DD6008A87EB /* GetCuriosityPhotosOperation.swift in Sources */,
 				6B2E5E1928C34C44008A87EB /* SampleTaskManager.swift in Sources */,
+				6B9CC19F28D730DB00DE744A /* RoverInfo.swift in Sources */,
 				6B58F2B928C0F97200160C22 /* InputField.swift in Sources */,
 				6B58F2C628C1351600160C22 /* InputContainerView.swift in Sources */,
 				6B2E5E3028C387DD008A87EB /* PhotoCollectionViewCell.swift in Sources */,

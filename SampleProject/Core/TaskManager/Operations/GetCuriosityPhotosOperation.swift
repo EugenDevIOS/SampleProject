@@ -1,5 +1,5 @@
 //
-//  RoverPhotosOperation.swift
+//  GetCuriosityPhotosOperation.swift
 //
 
 import Alamofire
