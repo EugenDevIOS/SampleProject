@@ -22,7 +22,7 @@
 
 import UIKit
 
-open class ZoomImageView : UIScrollView, UIScrollViewDelegate {
+class ZoomImageView : UIScrollView, UIScrollViewDelegate {
 
   public enum ZoomMode {
     case fit
